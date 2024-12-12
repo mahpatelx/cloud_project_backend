@@ -1,0 +1,8 @@
+flask
+langchain
+huggingface-hub
+transformers
+torch
+torchvision
+torchaudio
+--index-url https://download.pytorch.org/whl/cu121

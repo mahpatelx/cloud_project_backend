@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
-from langchain.llms import HuggingFacePipeline
-from langchain import PromptTemplate, LLMChain
+from langchain_core.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from langchain_huggingface import HuggingFacePipeline
 from huggingface_hub import login
 
 # Initialize Flask app
@@ -12,18 +12,18 @@ app = Flask(__name__)
 model_name = "meta-llama/Llama-3.2-1B"
 
 # Login to Hugging Face Hub
-login(token="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")
+login(token="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")  # Replace with your Hugging Face Hub token
 
 # Load the model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16).cuda()
+model = AutoModelForCausalLM.from_pretrained(model_name)
 
-# Create a pipeline for text generation
+# Create a pipeline for text generation (CPU-friendly)
 text_pipeline = pipeline(
     "text-generation",
     model=model,
     tokenizer=tokenizer,
-    device=0  # Ensure this matches your CUDA device
+    device=-1  # Use -1 to run on CPU
 )
 
 # Wrap the pipeline with LangChain's HuggingFacePipeline
@@ -52,3 +52,4 @@ def generate():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+

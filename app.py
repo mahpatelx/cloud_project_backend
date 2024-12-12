@@ -5,14 +5,22 @@ from langchain.chains import LLMChain
 from langchain_huggingface import HuggingFacePipeline
 from huggingface_hub import login
 
-# Initialize Flask app
-app = Flask(__name__)
-
 # Model configuration
 model_name = "meta-llama/Llama-3.2-1B"
 
+
+with open("env.txt", "r") as f:
+    token = f.read().strip()  # Strip any extra whitespace or line breaks
+    print(token)  # Optional: Check the token
 # Login to Hugging Face Hub
-login(token="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")  # Replace with your Hugging Face Hub token
+login(token=token)
+
+
+
+
+# Initialize Flask app
+app = Flask(__name__)
+
 
 # Load the model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_name)

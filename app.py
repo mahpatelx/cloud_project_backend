@@ -8,7 +8,7 @@ from huggingface_hub import login
 # Model configuration
 
 #model_name = "meta-llama/Llama-3.2-1B"
- model_name = "meta-llama/Llama-3.2-1B-Instruct"
+model_name = "meta-llama/Llama-3.2-1B-Instruct"
 
 with open("env.txt", "r") as f:
     token = f.read().strip()  # Strip any extra whitespace or line breaks

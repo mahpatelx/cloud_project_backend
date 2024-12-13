@@ -1,4 +1,5 @@
 pip install flask langchain huggingface-hub langchain_community transformers torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 
+
 pip install flask langchain huggingface-hub langchain_community langchain_huggingface gunicorn transformers torch torchvision torchaudio

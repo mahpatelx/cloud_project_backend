@@ -48,7 +48,7 @@ def generate():
 
     try:
         # Define a prompt template
-        template = PromptTemplate(input_variables=["prompt"], template="{prompt}")
+        template = PromptTemplate(input_variables=["prompt"], template="You are helpful assistant. {prompt}")
 
         # Create an LLMChain with the prompt template and LLM
         llm_chain = LLMChain(prompt=template, llm=llm)

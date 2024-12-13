@@ -6,6 +6,7 @@ from langchain_huggingface import HuggingFacePipeline
 from huggingface_hub import login
 
 # Model configuration
+
 model_name = "meta-llama/Llama-3.2-1B"
 
 
